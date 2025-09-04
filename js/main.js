@@ -1,38 +1,97 @@
-// Esperar a que el DOM esté completamente cargado
+// ========== INICIALIZACIÓN PRINCIPAL ==========
 document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('particles-canvas')) {
-    new Particles();
-  }
-  // Inicializar funcionalidades
+  // Inicializar todas las funcionalidades
   initMenuToggle();
   initThemeToggle();
   initProjectFilter();
   initProjectModals();
   initSkillBars();
   initSmoothScrolling();
+  initScrollHeader();
+  initScrollAnimations();
   
-  // Inicializar partículas
-  initParticles();
+  // Inicializar partículas si el canvas existe
+  if (document.getElementById('particles-canvas')) {
+    initParticles();
+  }
 });
 
-// Toggle del menú móvil
+// ========== HEADER OCULTABLE AL HACER SCROLL ==========
+function initScrollHeader() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  
+  let lastScrollY = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    // No ocultar header en móviles cuando el menú está abierto
+    const nav = document.querySelector('.nav');
+    if (window.innerWidth < 768 && nav && nav.classList.contains('active')) {
+      return;
+    }
+    
+    if (window.scrollY > 100) {
+      if (window.scrollY > lastScrollY) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+    } else {
+      header.classList.remove('hidden');
+    }
+    
+    lastScrollY = window.scrollY;
+  });
+}
+
+// ========== MEJORAS PARA EL MENÚ MÓVIL ==========
 function initMenuToggle() {
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const body = document.body;
   
-  if (menuToggle && nav) {
-    menuToggle.addEventListener('click', function() {
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      nav.classList.toggle('active');
+  if (!menuToggle || !nav) return;
+  
+  menuToggle.addEventListener('click', function() {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    nav.classList.toggle('active');
+    body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    
+    // Cambiar icono de hamburguesa a X
+    this.classList.toggle('active');
+  });
+  
+  // Cerrar menú al hacer clic en un enlace
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('active');
+      body.style.overflow = '';
+      menuToggle.classList.remove('active');
     });
-  }
+  });
+  
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('active') && 
+        !nav.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('active');
+      body.style.overflow = '';
+      menuToggle.classList.remove('active');
+    }
+  });
 }
 
-// Toggle del tema claro/oscuro
+// ========== TOGGLE DEL TEMA CLARO/OSCURO ==========
 function initThemeToggle() {
   const themeToggle = document.querySelector('.theme-toggle');
   const themeIcon = document.querySelector('.theme-icon');
+  
+  if (!themeToggle) return;
   
   // Verificar preferencia guardada o del sistema
   const savedTheme = localStorage.getItem('theme');
@@ -48,25 +107,25 @@ function initThemeToggle() {
   }
   
   // Configurar el toggle
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      if (themeIcon) {
-        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-      }
-    });
-  }
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    if (themeIcon) {
+      themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+  });
 }
 
-// Filtrado de proyectos
+// ========== FILTRADO DE PROYECTOS ==========
 function initProjectFilter() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  
+  if (filterButtons.length === 0 || projectCards.length === 0) return;
   
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -99,18 +158,19 @@ function initProjectFilter() {
   });
 }
 
-// Modales de proyectos
+// ========== MODALES DE PROYECTOS ==========
 function initProjectModals() {
   const viewButtons = document.querySelectorAll('.view-details');
   const modal = document.getElementById('project-modal');
   const modalClose = document.querySelector('.modal-close');
   
-  // Datos de ejemplo para los proyectos (en un caso real, podrían venir de una API)
+  if (viewButtons.length === 0 || !modal) return;
+  
+  // Datos de ejemplo para los proyectos
   const projectData = {
     1: {
       title: 'Landing Pages Corporativas',
       image: 'assets/images/project-1.jpg',
-      description: 'Diseño y desarrollo de landing pages optimizadas para conversión y posicionamiento SEO. Este proyecto incluyó la implementación de mejores prácticas de desarrollo web, diseño responsive y optimización de rendimiento.',
       longDescription: '<p>Desarrollé una serie de landing pages para diferentes empresas, enfocándome en la optimización de la tasa de conversión y el posicionamiento SEO. Cada landing page fue diseñada considerando la identidad de marca del cliente y sus objetivos específicos.</p><p>El proyecto incluyó investigación de audiencia, diseño de interfaz de usuario, desarrollo frontend con HTML5, CSS3 y JavaScript, y optimización para motores de búsqueda.</p>',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'SEO', 'Responsive Design'],
       challenges: ['Optimización de velocidad de carga', 'Compatibilidad entre navegadores', 'Diseño adaptable a diferentes dispositivos'],
@@ -120,7 +180,6 @@ function initProjectModals() {
     2: {
       title: 'Software Educativo',
       image: 'assets/images/project-2.jpg',
-      description: 'Aplicación educativa interactiva con funcionalidades multimedia para mejorar el aprendizaje.',
       longDescription: '<p>Desarrollo de una aplicación educativa que incorpora elementos multimedia para hacer el aprendizaje más interactivo y efectivo. La aplicación incluye integración con cámara para actividades prácticas y seguimiento de progreso.</p><p>El sistema fue construido con Java y utiliza MySQL para el almacenamiento de datos. Incluye funciones como quizzes interactivos, seguimiento de progreso y contenido multimedia educativo.</p>',
       technologies: ['Java', 'MySQL', 'Integración de cámara', 'JavaFX', 'Multimedia'],
       challenges: ['Sincronización de contenido multimedia', 'Optimización de base de datos', 'Interfaz intuitiva para diferentes grupos de edad'],
@@ -130,7 +189,6 @@ function initProjectModals() {
     3: {
       title: 'Sistema Gimnasio',
       image: 'assets/images/project-3.jpg',
-      description: 'Sistema de gestión para gimnasios con control de membresías, pagos y generación de reportes.',
       longDescription: '<p>Sistema completo de gestión para gimnasios que permite administrar miembros, membresías, pagos, asistencia y generar reportes detallados. La solución incluye un dashboard intuitivo para visualizar métricas clave del negocio.</p><p>El sistema fue desarrollado con enfoque en la experiencia de usuario, asegurando que los administradores puedan realizar sus tareas de manera eficiente y con la menor curva de aprendizaje posible.</p>',
       technologies: ['Dashboard', 'Sistema de reportes', 'Gestión de membresías', 'Sistema de pagos', 'Control de asistencia'],
       challenges: ['Diseño de base de datos eficiente', 'Generación de reportes en tiempo real', 'Interfaz usable para personal no técnico'],
@@ -140,7 +198,6 @@ function initProjectModals() {
     4: {
       title: 'FactuPan360 (POS)',
       image: 'assets/images/project-4.jpg',
-      description: 'Sistema punto de venta completo para panaderías con control de inventario y facturación.',
       longDescription: '<p>Sistema punto de venta especializado para panaderías que incluye control de inventario, gestión de recetas, facturación y reportes de ventas. La solución está optimizada para el flujo de trabajo particular de una panadería, con funciones como cálculo automático de ingredientes según la producción.</p><p>Desarrollado en Java con interfaz gráfica amigable y base de datos MySQL para el almacenamiento persistente.</p>',
       technologies: ['Java', 'MySQL', 'Sistema POS', 'Control de inventario', 'Facturación electrónica'],
       challenges: ['Gestión de inventario en tiempo real', 'Optimización para hardware de bajo costo', 'Cálculo automático de ingredientes según recetas'],
@@ -155,7 +212,7 @@ function initProjectModals() {
       const projectId = this.getAttribute('data-project');
       const project = projectData[projectId];
       
-      if (project && modal) {
+      if (project) {
         const modalBody = modal.querySelector('.modal-body');
         modalBody.innerHTML = `
           <h2 id="modal-title">${project.title}</h2>
@@ -185,7 +242,7 @@ function initProjectModals() {
         `;
         
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevenir scroll
+        document.body.style.overflow = 'hidden';
       }
     });
   });
@@ -196,13 +253,11 @@ function initProjectModals() {
   }
   
   // Cerrar modal al hacer clic fuera
-  if (modal) {
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-  }
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
   
   // Cerrar modal con tecla Escape
   document.addEventListener('keydown', function(e) {
@@ -212,32 +267,23 @@ function initProjectModals() {
   });
   
   function closeModal() {
-    const modal = document.getElementById('project-modal');
-    if (modal) {
-      modal.classList.remove('active');
-      document.body.style.overflow = ''; // Restaurar scroll
-    }
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
   }
 }
 
-// Animación de barras de habilidades
+// ========== ANIMACIÓN DE BARRAS DE HABILIDADES ==========
 function initSkillBars() {
   const skillLevels = document.querySelectorAll('.skill-level');
-  
-  // Función para animar las barras cuando son visibles
-  function animateSkills() {
-    skillLevels.forEach(level => {
-      const width = level.getAttribute('data-level');
-      level.style.width = width;
-    });
-  }
+  if (skillLevels.length === 0) return;
   
   // Usar Intersection Observer para animar cuando son visibles
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateSkills();
+          const width = entry.target.getAttribute('data-level');
+          entry.target.style.width = width;
           observer.unobserve(entry.target);
         }
       });
@@ -248,13 +294,19 @@ function initSkillBars() {
     });
   } else {
     // Fallback para navegadores que no soportan Intersection Observer
-    animateSkills();
+    skillLevels.forEach(level => {
+      const width = level.getAttribute('data-level');
+      level.style.width = width;
+    });
   }
 }
 
-// Scroll suave para enlaces internos
+// ========== SCROLL SUAVE PARA ENLACES INTERNOS ==========
 function initSmoothScrolling() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  const links = document.querySelectorAll('a[href^="#"]');
+  if (links.length === 0) return;
+  
+  links.forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
@@ -270,6 +322,8 @@ function initSmoothScrolling() {
         if (nav && nav.classList.contains('active')) {
           nav.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          menuToggle.classList.remove('active');
         }
         
         // Scroll suave al elemento
@@ -282,96 +336,164 @@ function initSmoothScrolling() {
   });
 }
 
-// Inicializar partículas
-function initParticles() {
-  if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: '#2563eb'
-        },
-        shape: {
-          type: 'circle',
-          stroke: {
-            width: 0,
-            color: '#000000'
-          }
-        },
-        opacity: {
-          value: 0.5,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#2563eb',
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: 'none',
-          random: true,
-          straight: false,
-          out_mode: 'out',
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
+// ========== ANIMACIONES AL SCROLL ==========
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.project-card, .skill-category, .about-content');
+  if (animatedElements.length === 0) return;
+  
+  // Usar Intersection Observer para animar elementos al hacer scroll
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible';
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
         }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: {
-          onhover: {
-            enable: true,
-            mode: 'grab'
-          },
-          onclick: {
-            enable: true,
-            mode: 'push'
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            line_linked: {
-              opacity: 1
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
-        }
-      },
-      retina_detect: true
+      });
+    }, { threshold: 0.1 });
+    
+    animatedElements.forEach(el => {
+      el.style.visibility = 'hidden';
+      observer.observe(el);
+    });
+  } else {
+    // Fallback para navegadores antiguos
+    animatedElements.forEach(el => {
+      el.classList.add('animate-in');
     });
   }
+}
+
+// ========== SISTEMA DE PARTÍCULAS ==========
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  
+  // Configuración de partículas
+  const config = {
+    count: Math.floor((window.innerWidth * window.innerHeight) / 10000),
+    colors: ['#2563eb', '#3b82f6', '#93c5fd'],
+    mouseRadius: 100
+  };
+  
+  // Clase Partícula
+  class Particle {
+    constructor() {
+      this.size = (Math.random() * 2) + 1;
+      this.x = Math.random() * (canvas.width - this.size * 2) + this.size * 2;
+      this.y = Math.random() * (canvas.height - this.size * 2) + this.size * 2;
+      this.directionX = (Math.random() * 1) - 0.5;
+      this.directionY = (Math.random() * 1) - 0.5;
+      this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
+    }
+    
+    update(mouse) {
+      // Rebote en bordes
+      if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+        this.directionX = -this.directionX;
+      }
+      if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+        this.directionY = -this.directionY;
+      }
+      
+      // Interacción con el ratón
+      if (mouse.x && mouse.y) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < config.mouseRadius) {
+          const force = (config.mouseRadius - distance) / config.mouseRadius;
+          const forceDirectionX = dx / distance * force * 5;
+          const forceDirectionY = dy / distance * force * 5;
+          
+          this.x -= forceDirectionX;
+          this.y -= forceDirectionY;
+        }
+      }
+      
+      this.x += this.directionX;
+      this.y += this.directionY;
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+  
+  // Inicializar partículas
+  function init() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    
+    for (let i = 0; i < config.count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  
+  // Dibujar conexiones entre partículas
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 100) {
+          const opacity = 1 - (distance / 100);
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(37, 99, 235, ${opacity * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  
+  // Animación
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    drawConnections();
+    
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update(mouse);
+      particles[i].draw();
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  // Seguimiento del ratón
+  const mouse = {
+    x: null,
+    y: null,
+    radius: config.mouseRadius
+  };
+  
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+  });
+  
+  window.addEventListener('mouseout', () => {
+    mouse.x = undefined;
+    mouse.y = undefined;
+  });
+  
+  window.addEventListener('resize', init);
+  
+  // Iniciar
+  init();
+  animate();
 }
