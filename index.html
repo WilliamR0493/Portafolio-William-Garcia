@@ -1,394 +1,412 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William García - Desarrollador Full Stack Junior</title>
-    <meta name="description" content="Portafolio de William García, Desarrollador Full Stack Junior de Chiquinquirá, Boyacá, Colombia. Especializado en desarrollo web y aplicaciones.">
-    <meta name="keywords" content="desarrollador, full stack, junior, Colombia, Boyacá, Chiquinquirá, HTML, CSS, JavaScript, Java, MySQL">
-    <meta name="author" content="William García">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://williamr0493.github.io/portfolio/">
-    <meta property="og:title" content="William García - Desarrollador Full Stack Junior">
-    <meta property="og:description" content="Portafolio de William García, Desarrollador Full Stack Junior especializado en desarrollo web y aplicaciones.">
-    <meta property="og:image" content="https://williamr0493.github.io/portfolio/assets/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://williamr0493.github.io/portfolio/">
-    <meta property="twitter:title" content="William García - Desarrollador Full Stack Junior">
-    <meta property="twitter:description" content="Portafolio de William García, Desarrollador Full Stack Junior especializado en desarrollo web y aplicaciones.">
-    <meta property="twitter:image" content="https://williamr0493.github.io/portfolio/assets/images/og-image.jpg">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>William García - Desarrollador Full Stack</title>
+    <meta
+      name="description"
+      content="Portafolio de William Rolando García, Desarrollador Full Stack junior especializado en desarrollo web y aplicaciones."
+    />
+    <meta
+      name="keywords"
+      content="desarrollador, full stack, Colombia, Boyacá, Chiquinquirá, HTML, CSS, JavaScript, Java, MySQL"
+    />
+    <meta name="author" content="William García" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://williamr0493.github.io/portfolio/"
+    />
+    <meta
+      property="og:title"
+      content="William García - Desarrollador Full Stack"
+    />
+    <meta
+      property="og:description"
+      content="Portafolio de William García, Desarrollador Full Stack especializado en desarrollo web y aplicaciones."
+    />
+    <meta
+      property="og:image"
+      content="https://williamr0493.github.io/portfolio/assets/images/og-image.jpg"
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/particles.css">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://williamr0493.github.io/portfolio/">
-</head>
-<body>
-    <canvas id="particles-canvas"></canvas>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="particles-js"></div>
-    
-    <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-    
-   <header class="header">
-    <div class="container">
-        <a href="/" class="logo">WG</a>
-        
-        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-            <span class="menu-bar"></span>
-            <span class="menu-bar"></span>
-            <span class="menu-bar"></span>
+
+    <header class="header">
+      <div class="container">
+        <a href="/" class="logo"> <i class="fas fa-code"></i> WG </a>
+
+        <button
+          class="menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
         </button>
-        
+
         <nav class="nav" aria-label="Navegación principal">
-            <ul class="nav-list">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-                <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-                <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
+          <ul class="nav-list">
+            <li><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+            <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+            <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+          </ul>
         </nav>
-        
+
         <button class="theme-toggle" aria-label="Cambiar modo claro/oscuro">
-            <span class="theme-icon">🌙</span>
+          <span class="theme-icon">🌙</span>
         </button>
-    </div>
-</header>
+      </div>
+    </header>
 
-    <main id="main-content">
-        <section id="inicio" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>William García</h1>
-                    <h2>Desarrollador Full Stack Junior</h2>
-                    <p class="hero-description">Desarrollo soluciones web innovadoras con enfoque en experiencia de usuario y rendimiento. Con base en Chiquinquirá, Boyacá, Colombia.</p>
-                    
-                    <div class="hero-buttons">
-                        <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
-                        <a href="assets/docs/CV-William-Garcia.pdf" class="btn btn-secondary" download>Descargar CV</a>
-                    </div>
-                </div>
-                
-                <div class="hero-image">
-                    <img src="assets/images/hero-bg.jpg" alt="William García - Desarrollador Full Stack" loading="lazy">
-                </div>
-            </div>
-        </section>
+    <main>
+      <section id="inicio" class="hero">
+        <div class="hero-content">
+          <!-- Reemplaza la URL con la de tu foto real -->
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300&q=80"
+            alt="William García"
+            class="profile-image"
+          />
+          <h1>William García</h1>
+          <h2>Desarrollador Full Stack</h2>
+          <p class="hero-description">
+            Creo soluciones digitales innovadoras con tecnologías modernas y
+            enfoque en experiencia de usuario.
+          </p>
+          <div class="hero-buttons">
+            <a href="#proyectos" class="btn btn-primary btn-float">
+              <i class="fas fa-arrow-down"></i> Ver Proyectos
+            </a>
+            <a href="#contacto" class="btn btn-secondary">
+              <i class="fas fa-paper-plane"></i> Contactar
+            </a>
+            <!-- Reemplaza # con el enlace a tu CV -->
+            <a href="#" class="btn btn-primary btn-pulse" download>
+              <i class="fas fa-download"></i> Descargar CV
+            </a>
+          
+          </div>
+        </div>
+      </section>
 
-        <section id="proyectos" class="projects">
-            <div class="container">
-                <h2 class="section-title">Mis Proyectos</h2>
-                
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">Todos</button>
-                    <button class="filter-btn" data-filter="html">HTML/CSS</button>
-                    <button class="filter-btn" data-filter="java">Java</button>
-                    <button class="filter-btn" data-filter="dashboard">Dashboard</button>
-                </div>
-                
-                <div class="projects-grid">
-                    <!-- Proyecto 1 -->
-                    <article class="project-card" data-category="html">
-                        <div class="project-image">
-                            <img src="assets/images/project-1.jpg" alt="Landing Pages Corporativas" loading="lazy">
-                        </div>
-                        <div class="project-content">
-                            <h3>Landing Pages Corporativas</h3>
-                            <p class="project-tech">HTML, CSS, JavaScript</p>
-                            <p class="project-description">Diseño y desarrollo de landing pages optimizadas para conversión y posicionamiento SEO.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/WilliamR0493/landing" class="project-link" target="_blank" rel="noopener">Repositorio</a>
-                                <button class="project-link view-details" data-project="1">Ver Detalles</button>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 2 -->
-                    <article class="project-card" data-category="java">
-                        <div class="project-image">
-                            <img src="assets/images/project-2.jpg" alt="Software Educativo" loading="lazy">
-                        </div>
-                        <div class="project-content">
-                            <h3>Software Educativo</h3>
-                            <p class="project-tech">Java, MySQL, Integración cámara</p>
-                            <p class="project-description">Aplicación educativa interactiva con funcionalidades multimedia para mejorar el aprendizaje.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/WilliamR0493/edu-software" class="project-link" target="_blank" rel="noopener">Repositorio</a>
-                                <button class="project-link view-details" data-project="2">Ver Detalles</button>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 3 -->
-                    <article class="project-card" data-category="dashboard">
-                        <div class="project-image">
-                            <img src="assets/images/project-3.jpg" alt="Sistema Gimnasio" loading="lazy">
-                        </div>
-                        <div class="project-content">
-                            <h3>Sistema Gimnasio</h3>
-                            <p class="project-tech">Dashboard, Reportes</p>
-                            <p class="project-description">Sistema de gestión para gimnasios con control de membresías, pagos y generación de reportes.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/WilliamR0493/gym-dashboard" class="project-link" target="_blank" rel="noopener">Repositorio</a>
-                                <button class="project-link view-details" data-project="3">Ver Detalles</button>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 4 -->
-                    <article class="project-card" data-category="java">
-                        <div class="project-image">
-                            <img src="assets/images/project-4.jpg" alt="FactuPan360 (POS)" loading="lazy">
-                        </div>
-                        <div class="project-content">
-                            <h3>FactuPan360 (POS)</h3>
-                            <p class="project-tech">Java, MySQL</p>
-                            <p class="project-description">Sistema punto de venta completo para panaderías con control de inventario y facturación.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/WilliamR0493/factupan360" class="project-link" target="_blank" rel="noopener">Repositorio</a>
-                                <button class="project-link view-details" data-project="4">Ver Detalles</button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+      <section id="proyectos" class="projects">
+        <div class="container">
+          <h2 class="section-title">
+            Mis <span class="text-gradient">Proyectos</span>
+          </h2>
 
-        <section id="habilidades" class="skills">
-            <div class="container">
-                <h2 class="section-title">Habilidades Técnicas</h2>
-                
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <div class="skill">
-                            <span class="skill-name">HTML5</span>
-                            <div class="skill-bar">
-                                <div class="skill-level advanced" data-level="90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">CSS3</span>
-                            <div class="skill-bar">
-                                <div class="skill-level advanced" data-level="85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-level intermediate" data-level="75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <div class="skill">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar">
-                                <div class="skill-level intermediate" data-level="80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">MySQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-level intermediate" data-level="70%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Spring Boot</span>
-                            <div class="skill-bar">
-                                <div class="skill-level basic" data-level="60%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Herramientas</h3>
-                        <div class="skill">
-                            <span class="skill-name">Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-level intermediate" data-level="75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Figma</span>
-                            <div class="skill-bar">
-                                <div class="skill-level basic" data-level="65%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">VS Code</span>
-                            <div class="skill-bar">
-                                <div class="skill-level advanced" data-level="85%"></div>
-                            </div>
-                        </div>
-                    </div>
+          <div class="projects-grid">
+            <article
+              class="project-card animate-on-scroll"
+              data-category="html"
+            >
+              <div class="project-image">
+                <img
+                  src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22200%22%20viewBox%3D%220%200%20300%20200%22%3E%3Crect%20fill%3D%22%232563eb%22%20width%3D%22300%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23ffffff%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20x%3D%22120%22%20y%3D%22100%22%3ELanding%20Pages%3C%2Ftext%3E%3C%2Fsvg%3E"
+                  alt="Landing Pages Corporativas"
+                />
+              </div>
+              <div class="project-content">
+                <h3>Landing Pages Corporativas</h3>
+                <p class="project-tech">HTML, CSS, JavaScript</p>
+                <p class="project-description">
+                  Diseño y desarrollo de landing pages optimizadas para
+                  conversión y posicionamiento SEO.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/WilliamR0493/landing"
+                    class="btn btn-primary"
+                    target="_blank"
+                  >
+                    <i class="fab fa-github"></i> Repositorio
+                  </a>
+                  <button
+                    class="btn btn-secondary view-details"
+                    data-project="1"
+                  >
+                    <i class="fas fa-eye"></i> Detalles
+                  </button>
                 </div>
-            </div>
-        </section>
+              </div>
+            </article>
 
-        <section id="sobre-mi" class="about">
-            <div class="container">
-                <h2 class="section-title">Sobre Mí</h2>
-                
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Soy un desarrollador Full Stack Junior con base en Chiquinquirá, Boyacá, Colombia. Mi pasión es crear soluciones tecnológicas que resuelvan problemas reales y mejoren la experiencia de los usuarios.</p>
-                        
-                        <p>Me especializo en el desarrollo de aplicaciones web utilizando tecnologías como HTML, CSS, JavaScript para el frontend, y Java con MySQL para el backend. Siempre estoy aprendiendo nuevas tecnologías y mejorando mis habilidades.</p>
-                        
-                        <div class="education">
-                            <h3>Educación</h3>
-                            <div class="education-item">
-                                <h4>Tecnología en Desarrollo de Software</h4>
-                                <p class="institution">SENA - Servicio Nacional de Aprendizaje</p>
-                                <p class="date">2022 - 2024</p>
-                            </div>
-                            
-                            <div class="education-item">
-                                <h4>Curso de Java Avanzado</h4>
-                                <p class="institution">Platzi</p>
-                                <p class="date">2023</p>
-                            </div>
-                        </div>
-                        
-                        <div class="certifications">
-                            <h3>Certificaciones</h3>
-                            <ul>
-                                <li>Scrum Foundation Professional Certificate (SFPC)</li>
-                                <li>Oracle Java Foundations Certified Junior Associate</li>
-                                <li>Responsive Web Design - freeCodeCamp</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="about-image">
-                        <img src="assets/images/about-me.jpg" alt="William García desarrollador" loading="lazy">
-                    </div>
+            <article
+              class="project-card animate-on-scroll"
+              data-category="java"
+            >
+              <div class="project-image">
+                <img
+                  src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22200%22%20viewBox%3D%220%200%20300%20200%22%3E%3Crect%20fill%3D%22%2310b981%22%20width%3D%22300%22%20height%3D%22200%22%2F%3E%3Ctext%20fill%3D%22%23ffffff%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20x%3D%22100%22%20y%3D%22100%22%3ESoftware%20Educativo%3C%2Ftext%3E%3C%2Fsvg%3E"
+                  alt="Software Educativo"
+                />
+              </div>
+              <div class="project-content">
+                <h3>Software Educativo</h3>
+                <p class="project-tech">Java, MySQL, Integración cámara</p>
+                <p class="project-description">
+                  Aplicación educativa interactiva con funcionalidades
+                  multimedia para mejorar el aprendizaje.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/WilliamR0493/edu-software"
+                    class="btn btn-primary"
+                    target="_blank"
+                  >
+                    <i class="fab fa-github"></i> Repositorio
+                  </a>
+                  <button
+                    class="btn btn-secondary view-details"
+                    data-project="2"
+                  >
+                    <i class="fas fa-eye"></i> Detalles
+                  </button>
                 </div>
-            </div>
-        </section>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <section id="contacto" class="contact">
-            <div class="container">
-                <h2 class="section-title">Contacto</h2>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <p>¿Tienes un proyecto en mente? ¡Hablemos! Estoy disponible para oportunidades laborales y proyectos freelance.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <h3>Email</h3>
-                                <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <h3>Teléfono</h3>
-                                <a href="tel:+573000000000">+57 3000000000</a>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <h3>Ubicación</h3>
-                                <p>Chiquinquirá, Boyacá, Colombia</p>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="https://github.com/WilliamR0493" target="_blank" rel="noopener" aria-label="GitHub">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                            </a>
-                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
-                            <a href="#" target="_blank" rel="noopener" aria-label="Twitter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
+      <section id="habilidades" class="skills">
+        <div class="container">
+          <h2 class="section-title">
+            Mis <span class="text-gradient">Habilidades</span>
+          </h2>
+
+          <div class="skills-container">
+            <div class="skill-category animate-on-scroll">
+              <h3><i class="fab fa-html5"></i> Frontend</h3>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>HTML5</span>
+                  <span>90%</span>
                 </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="90%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>CSS3</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="85%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>JavaScript</span>
+                  <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="80%"></div>
+                </div>
+              </div>
             </div>
-        </section>
+
+            <div class="skill-category animate-on-scroll">
+              <h3><i class="fab fa-java"></i> Backend</h3>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Java</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="85%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>MySQL</span>
+                  <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="80%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Spring Boot</span>
+                  <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre-mi" class="about">
+        <div class="container">
+          <h2 class="section-title">
+            Sobre <span class="text-gradient">Mí</span>
+          </h2>
+
+          <div
+            class="glass-effect animate-on-scroll"
+            style="
+              padding: 2rem;
+              border-radius: var(--radius);
+              margin-bottom: 2rem;
+            "
+          >
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
+              Soy un desarrollador Full Stack con base en Chiquinquirá, Boyacá,
+              Colombia. Mi pasión es crear soluciones tecnológicas que resuelvan
+              problemas reales y mejoren la experiencia de los usuarios.
+            </p>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
+              Me especializo en el desarrollo de aplicaciones web utilizando
+              tecnologías como HTML, CSS, JavaScript para el frontend, y Java
+              con MySQL para el backend. Siempre estoy aprendiendo nuevas
+              tecnologías y mejorando mis habilidades.
+            </p>
+          </div>
+
+          <div class="skills-container">
+            <div class="skill-category animate-on-scroll">
+              <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Tecnología en Desarrollo de Software</span>
+                </div>
+                <p style="color: var(--text-light); font-size: 0.9rem">
+                  SENA - Servicio Nacional de Aprendizaje
+                </p>
+                <p style="color: var(--text-light); font-size: 0.9rem">
+                  2022 - 2024
+                </p>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Curso de Java Avanzado</span>
+                </div>
+                <p style="color: var(--text-light); font-size: 0.9rem">
+                  Platzi
+                </p>
+                <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
+              </div>
+            </div>
+
+            <div class="skill-category animate-on-scroll">
+              <h3><i class="fas fa-certificate"></i> Certificaciones</h3>
+              <ul style="color: var(--text-light); padding-left: 1.2rem">
+                <li>Scrum Foundation Professional Certificate (SFPC)</li>
+                <li>Oracle Java Foundations Certified Junior Associate</li>
+                <li>Responsive Web Design - freeCodeCamp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="contact">
+        <div class="container">
+          <h2 class="section-title">
+            ¿Trabajamos <span class="text-gradient">Juntos</span>?
+          </h2>
+
+          <form class="contact-form animate-on-scroll">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-pulse">
+              <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 William García. Todos los derechos reservados.</p>
-            
-            <div class="footer-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#contacto">Contacto</a>
-                <a href="assets/docs/CV-William-Garcia.pdf" download>Descargar CV</a>
-            </div>
+      <div class="container">
+        <p>&copy; 2023 William García. Todos los derechos reservados.</p>
+
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
         </div>
+
+        <div class="social-links">
+          <a
+            href="https://github.com/WilliamR0493"
+            aria-label="GitHub"
+            target="_blank"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a
+            href="https://wa.me/573000000000?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
+            aria-label="WhatsApp"
+            target="_blank"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
     </footer>
 
-    <!-- Modal para detalles de proyecto -->
-    <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Cerrar modal">×</button>
-            <div class="modal-body">
-                <!-- El contenido se carga dinámicamente con JavaScript -->
-            </div>
-        </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="app.js"></script>
 
-    <!-- Toast notification -->
-    <div class="toast" id="toast" aria-live="polite"></div>
-
-    <!-- JavaScript -->
-    
-    <script src="js/main.js"></script>
-    <script src="js/form-validation.js"></script>
-    
-   
-</body>
+    <a
+      href="https://wa.me/573000000000?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Contactar por WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </body>
 </html>
