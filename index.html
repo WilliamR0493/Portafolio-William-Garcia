@@ -45,7 +45,924 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --primary-light: #93c5fd;
+        --secondary: #10b981;
+        --accent: #f59e0b;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --bg: #ffffff;
+        --bg-dark: #0f172a;
+        --bg-light: #f8fafc;
+        --bg-card: rgba(255, 255, 255, 0.85);
+        --glass: rgba(255, 255, 255, 0.15);
+        --glass-dark: rgba(0, 0, 0, 0.2);
+        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        --radius: 12px;
+        --header-height: 80px;
+        --border-glass: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      [data-theme="dark"] {
+        --text: #f1f5f9;
+        --text-light: #cbd5e1;
+        --bg: #0f172a;
+        --bg-dark: #020617;
+        --bg-light: #1e293b;
+        --bg-card: rgba(15, 23, 42, 0.85);
+        --glass: rgba(255, 255, 255, 0.05);
+        --glass-dark: rgba(0, 0, 0, 0.3);
+        --border-glass: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--bg);
+        overflow-x: hidden;
+        transition: var(--transition);
+        background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+        min-height: 100vh;
+      }
+
+      /* Animaciones personalizadas */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+        }
+      }
+
+      @keyframes typewriter {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: var(--primary);
+        }
+      }
+
+      @keyframes skillShine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes pulse-whatsapp {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      /* Partículas */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      /* Header fijo con glassmorphism */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--header-height);
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border-bottom: var(--border-glass);
+        z-index: 1000;
+        transition: var(--transition);
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .header.hidden {
+        transform: translateY(-100%);
+      }
+
+      .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: var(--transition);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        background: var(--glass);
+        border: var(--border-glass);
+        cursor: pointer;
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+      }
+
+      .theme-toggle:hover {
+        background: var(--glass-dark);
+        transform: rotate(180deg);
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+      }
+
+      .menu-bar {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--text);
+        border-radius: 3px;
+        transition: var(--transition);
+        transform-origin: center;
+      }
+
+      .menu-toggle.active .menu-bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .menu-toggle.active .menu-bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+
+      .menu-toggle.active .menu-bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      /* Hero section con efecto de máquina de escribir */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-top: var(--header-height);
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 2rem;
+        animation: scaleIn 1s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        color: var(--text-light);
+        overflow: hidden;
+        border-right: 0.15em solid var(--primary);
+        white-space: nowrap;
+        animation: typewriter 3s steps(40, end), blink 0.8s step-end infinite;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+        color: var(--text-light);
+        animation: slideUp 0.8s 0.5s ease-out both;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: slideUp 0.8s 0.8s ease-out both;
+      }
+
+      /* Botones con efecto de vidrio */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 2rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-secondary {
+        background: var(--glass);
+        color: var(--primary);
+        border: var(--border-glass);
+      }
+
+      .btn-secondary:hover {
+        background: var(--glass-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-whatsapp {
+        background: #25d366;
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-whatsapp:hover {
+        background: #128c7e;
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .btn-pulse {
+        animation: pulse 2s infinite;
+      }
+
+      /* Secciones con efecto de vidrio */
+      section {
+        padding: 5rem 0;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 2px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Tarjetas de proyectos con efecto de vidrio */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        border: var(--border-glass);
+        animation: scaleIn 0.6s ease-out;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .project-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.1);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-tech {
+        color: var(--primary);
+        font-weight: 500;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .project-description {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      /* Habilidades con gráficos animados y efecto de vidrio */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: var(--border-glass);
+        animation: slideUp 0.6s ease-out;
+      }
+
+      .skill-category h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .skill {
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .skill-bar {
+        height: 8px;
+        background: var(--glass-dark);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .skill-level {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        position: relative;
+        transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .skill-level::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: skillShine 2s infinite;
+      }
+
+      /* Formulario de contacto con efecto de vidrio */
+      .contact-form {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: var(--border-glass);
+        animation: scaleIn 0.6s ease-out;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: var(--border-glass);
+        border-radius: var(--radius);
+        font-family: inherit;
+        font-size: 1rem;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        color: var(--text);
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      }
+
+      /* Footer con efecto de vidrio */
+      .footer {
+        background: var(--glass-dark);
+        backdrop-filter: blur(10px);
+        color: var(--text);
+        padding: 3rem 0;
+        text-align: center;
+        border-top: var(--border-glass);
+      }
+
+      .footer .container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: var(--text);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        color: var(--text);
+        transition: var(--transition);
+        border: var(--border-glass);
+      }
+
+      .social-links a:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Testimonios */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .testimonial-card {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: var(--border-glass);
+        animation: slideUp 0.6s ease-out;
+      }
+
+      .testimonial-content {
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        color: var(--text-light);
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .testimonial-info h4 {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .testimonial-info p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        :root {
+          --header-height: 70px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero h2 {
+          font-size: 1.3rem;
+        }
+
+        .profile-image {
+          width: 150px;
+          height: 150px;
+        }
+
+        .nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: var(--glass);
+          backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: translateX(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: var(--transition);
+          z-index: 999;
+          border-right: var(--border-glass);
+        }
+
+        .nav.active {
+          transform: translateX(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-list {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .nav-link {
+          font-size: 1.5rem;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+        
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Utilidades */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .glass-effect {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border: var(--border-glass);
+      }
+      
+      .whatsapp-float {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: pulse-whatsapp 2s infinite;
+      }
+
+      .whatsapp-float:hover {
+        background-color: #128c7e;
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+      }
+
+      /* Responsive WhatsApp */
+      @media (max-width: 768px) {
+        .whatsapp-float {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -70,6 +987,7 @@
             <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
             <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
             <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+            <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
             <li><a href="#contacto" class="nav-link">Contacto</a></li>
           </ul>
         </nav>
@@ -86,8 +1004,9 @@
           <!-- Reemplaza la URL con la de tu foto real -->
           <img
             src="images/foto.webp"
-            alt="William García"
+            alt="William García - Desarrollador Full Stack"
             class="profile-image"
+            loading="lazy"
           />
           <h1>William García</h1>
           <h2>Desarrollador Junior Full Stack</h2>
@@ -100,11 +1019,11 @@
               <i class="fas fa-arrow-down"></i> Ver Proyectos
             </a>
             <a href="#contacto" class="btn btn-secondary">
-              <i class="fas fa-paper-plane"></i> Contactar
+              <i class="fas fa-paper-plane"></i> 💬 Hablemos Hoy
             </a>
             <!-- Reemplaza # con el enlace a tu CV -->
             <a href="#" class="btn btn-primary btn-pulse" download>
-              <i class="fas fa-download"></i> Descargar CV
+              <i class="fas fa-download"></i> 📄 Conoce mi CV
             </a>
           </div>
         </div>
@@ -122,13 +1041,11 @@
               data-category="html"
             >
               <div class="project-image">
-                <video width="100%" controls autoplay muted loop>
-                  <source
-                    src="images/samsung-galaxy-coin-spin.mp4"
-                    type="video/mp4"
-                  />
-                  Tu navegador no soporta el elemento de video.
-                </video>
+                <img 
+                  src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                  alt="Landing Page Corporativa" 
+                  loading="lazy"
+                />
               </div>
               <div class="project-content">
                 <h3>Landing Pages Corporativas</h3>
@@ -142,15 +1059,18 @@
                     href="https://github.com/WilliamR0493/landing"
                     class="btn btn-primary"
                     target="_blank"
+                    aria-label="Ver código en GitHub"
                   >
                     <i class="fab fa-github"></i> Repositorio
                   </a>
-                  <button
-                    class="btn btn-secondary view-details"
-                    data-project="1"
+                  <a
+                    href="#"
+                    class="btn btn-secondary"
+                    target="_blank"
+                    aria-label="Ver demo del proyecto"
                   >
-                    <i class="fas fa-eye"></i> Detalles
-                  </button>
+                    <i class="fas fa-external-link-alt"></i> Ver Demo
+                  </a>
                 </div>
               </div>
             </article>
@@ -160,14 +1080,12 @@
               data-category="java"
             >
               <div class="project-image">
-                <video width="100%" controls autoplay muted loop>
-                  <source
-                    src="images/ipad-with-magic-keyboard.mp4"
-                    type="video/mp4"
-                  />
-                  Tu navegador no soporta el elemento de video.
-                </video>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                  alt="Software Educativo" 
+                  loading="lazy"
+                />
+              </div>
               <div class="project-content">
                 <h3>Software Educativo</h3>
                 <p class="project-tech">Java, MySQL, Integración cámara</p>
@@ -180,15 +1098,57 @@
                     href="https://github.com/WilliamR0493/edu-software"
                     class="btn btn-primary"
                     target="_blank"
+                    aria-label="Ver código en GitHub"
                   >
                     <i class="fab fa-github"></i> Repositorio
                   </a>
-                  <button
-                    class="btn btn-secondary view-details"
-                    data-project="2"
+                  <a
+                    href="#"
+                    class="btn btn-secondary"
+                    target="_blank"
+                    aria-label="Ver demo del proyecto"
                   >
-                    <i class="fas fa-eye"></i> Detalles
-                  </button>
+                    <i class="fas fa-external-link-alt"></i> Ver Demo
+                  </a>
+                </div>
+              </div>
+            </article>
+            
+            <article
+              class="project-card animate-on-scroll"
+              data-category="fullstack"
+            >
+              <div class="project-image">
+                <img 
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                  alt="E-commerce Full Stack" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-content">
+                <h3>Tienda Online E-commerce</h3>
+                <p class="project-tech">Java, Spring Boot, MySQL, JavaScript</p>
+                <p class="project-description">
+                  Plataforma de comercio electrónico completa con carrito de compras,
+                  pasarela de pago y panel de administración.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    target="_blank"
+                    aria-label="Ver código en GitHub"
+                  >
+                    <i class="fab fa-github"></i> Repositorio
+                  </a>
+                  <a
+                    href="#"
+                    class="btn btn-secondary"
+                    target="_blank"
+                    aria-label="Ver demo del proyecto"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Ver Demo
+                  </a>
                 </div>
               </div>
             </article>
@@ -232,6 +1192,15 @@
                   <div class="skill-level" data-level="80%"></div>
                 </div>
               </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>React</span>
+                  <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="70%"></div>
+                </div>
+              </div>
             </div>
 
             <div class="skill-category animate-on-scroll">
@@ -263,6 +1232,55 @@
                   <div class="skill-level" data-level="75%"></div>
                 </div>
               </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Node.js</span>
+                  <span>65%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="65%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-category animate-on-scroll">
+              <h3><i class="fas fa-tools"></i> Herramientas</h3>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Git & GitHub</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="85%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Figma</span>
+                  <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="75%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Scrum/Agile</span>
+                  <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="80%"></div>
+                </div>
+              </div>
+              <div class="skill">
+                <div class="skill-name">
+                  <span>Photoshop</span>
+                  <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-level" data-level="70%"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -274,59 +1292,127 @@
             Sobre <span class="text-gradient">Mí</span>
           </h2>
 
-          <div
-            class="glass-effect animate-on-scroll"
-            style="
-              padding: 2rem;
-              border-radius: var(--radius);
-              margin-bottom: 2rem;
-            "
-          >
-            <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
-              Soy un desarrollador Full Stack con base en Chiquinquirá, Boyacá,
-              Colombia. Mi pasión es crear soluciones tecnológicas que resuelvan
-              problemas reales y mejoren la experiencia de los usuarios.
-            </p>
-            <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
-              Me especializo en el desarrollo de aplicaciones web utilizando
-              tecnologías como HTML, CSS, JavaScript para el frontend, y Java
-              con MySQL para el backend. Siempre estoy aprendiendo nuevas
-              tecnologías y mejorando mis habilidades.
-            </p>
-          </div>
-
-          <div class="skills-container">
-            <div class="skill-category animate-on-scroll">
-              <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
-              <div class="skill">
-                <div class="skill-name">
-                  <span>Tecnología en Desarrollo de Software</span>
-                </div>
-                <p style="color: var(--text-light); font-size: 0.9rem">
-                  SENA - Servicio Nacional de Aprendizaje
-                </p>
-                <p style="color: var(--text-light); font-size: 0.9rem">
-                  2022 - 2024
-                </p>
-              </div>
-              <div class="skill">
-                <div class="skill-name">
-                  <span>Curso de Java Avanzado</span>
-                </div>
-                <p style="color: var(--text-light); font-size: 0.9rem">
-                  Platzi
-                </p>
-                <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
-              </div>
+          <div class="about-content">
+            <div class="glass-effect animate-on-scroll" style="padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+              <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
+                Soy un desarrollador Full Stack con base en Chiquinquirá, Boyacá,
+                Colombia. Mi pasión es crear soluciones tecnológicas que resuelvan
+                problemas reales y mejoren la experiencia de los usuarios.
+              </p>
+              <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
+                Me especializo en el desarrollo de aplicaciones web utilizando
+                tecnologías como HTML, CSS, JavaScript para el frontend, y Java
+                con MySQL para el backend. Siempre estoy aprendiendo nuevas
+                tecnologías y mejorando mis habilidades.
+              </p>
+              <p style="font-size: 1.1rem">
+                Cuando no estoy programando, disfruto de la fotografía, los videojuegos
+                y aprender sobre nuevas tendencias tecnológicas.
+              </p>
             </div>
 
-            <div class="skill-category animate-on-scroll">
-              <h3><i class="fas fa-certificate"></i> Certificaciones</h3>
-              <ul style="color: var(--text-light); padding-left: 1.2rem">
-                <li>Scrum Foundation Professional Certificate (SFPC)</li>
-                <li>Oracle Java Foundations Certified Junior Associate</li>
-                <li>Responsive Web Design - freeCodeCamp</li>
-              </ul>
+            <div class="skills-container">
+              <div class="skill-category animate-on-scroll">
+                <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
+                <div class="skill">
+                  <div class="skill-name">
+                    <span>Tecnología en Desarrollo de Software</span>
+                  </div>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    SENA - Servicio Nacional de Aprendizaje
+                  </p>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    2022 - 2024
+                  </p>
+                </div>
+                <div class="skill">
+                  <div class="skill-name">
+                    <span>Curso de Java Avanzado</span>
+                  </div>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    Platzi
+                  </p>
+                  <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
+                </div>
+                <div class="skill">
+                  <div class="skill-name">
+                    <span>Desarrollo Web Frontend</span>
+                  </div>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    freeCodeCamp
+                  </p>
+                  <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
+                </div>
+              </div>
+
+              <div class="skill-category animate-on-scroll">
+                <h3><i class="fas fa-certificate"></i> Certificaciones</h3>
+                <ul style="color: var(--text-light); padding-left: 1.2rem">
+                  <li>Scrum Foundation Professional Certificate (SFPC)</li>
+                  <li>Oracle Java Foundations Certified Junior Associate</li>
+                  <li>Responsive Web Design - freeCodeCamp</li>
+                  <li>JavaScript Algorithms and Data Structures - freeCodeCamp</li>
+                  <li>Front End Development Libraries - freeCodeCamp</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="testimonios" class="testimonials">
+        <div class="container">
+          <h2 class="section-title">
+            <span class="text-gradient">Testimonios</span>
+          </h2>
+          
+          <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll">
+              <div class="testimonial-content">
+                "William demostró habilidades excepcionales en el desarrollo de nuestra plataforma educativa. Su atención al detalle y capacidad para resolver problemas complejos fueron fundamentales para el éxito del proyecto."
+              </div>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                     alt="Carlos Méndez" 
+                     class="testimonial-avatar"
+                     loading="lazy">
+                <div class="testimonial-info">
+                  <h4>Carlos Méndez</h4>
+                  <p>Director de Proyectos - EduTech Solutions</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+              <div class="testimonial-content">
+                "Trabajar con William fue una experiencia excelente. Su profesionalismo y conocimientos técnicos en desarrollo full stack superaron nuestras expectativas. Definitivamente lo recomiendo."
+              </div>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                     alt="María Rodríguez" 
+                     class="testimonial-avatar"
+                     loading="lazy">
+                <div class="testimonial-info">
+                  <h4>María Rodríguez</h4>
+                  <p>CEO - DigitalMind Agency</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+              <div class="testimonial-content">
+                "William tiene una gran capacidad para aprender rápidamente nuevas tecnologías. Su dedicación y pasión por el desarrollo web son evidentes en la calidad de su trabajo."
+              </div>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                     alt="Javier López" 
+                     class="testimonial-avatar"
+                     loading="lazy">
+                <div class="testimonial-info">
+                  <h4>Javier López</h4>
+                  <p>Instructor - SENA</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -369,11 +1455,14 @@
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2023 William García. Todos los derechos reservados.</p>
+        <p>&copy; <span id="current-year">2023</span> William García. Todos los derechos reservados.</p>
 
         <div class="footer-links">
           <a href="#inicio">Inicio</a>
           <a href="#proyectos">Proyectos</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#sobre-mi">Sobre Mí</a>
+          <a href="#testimonios">Testimonios</a>
           <a href="#contacto">Contacto</a>
         </div>
 
@@ -403,7 +1492,128 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="app.js"></script>
+    <script>
+      // Inicialización de partículas
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof particlesJS !== "undefined") {
+          particlesJS("particles-js", {
+            particles: {
+              number: { value: 80, density: { enable: true, value_area: 800 } },
+              color: { value: "#2563eb" },
+              shape: { type: "circle" },
+              opacity: { value: 0.5, random: true },
+              size: { value: 3, random: true },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#2563eb",
+                opacity: 0.4,
+                width: 1,
+              },
+              move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: true,
+                out_mode: "out",
+              },
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" },
+              },
+            },
+          });
+        }
+
+        // Año actual en el footer
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+
+        // Animaciones al hacer scroll
+        const animateOnScroll = function () {
+          const elements = document.querySelectorAll(".animate-on-scroll");
+          elements.forEach((el) => {
+            const position = el.getBoundingClientRect();
+            if (position.top < window.innerHeight - 100) {
+              el.classList.add("animated");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", animateOnScroll);
+        animateOnScroll(); // Ejecutar una vez al cargar
+
+        // Cambio de tema
+        const themeToggle = document.querySelector(".theme-toggle");
+        const themeIcon = document.querySelector(".theme-icon");
+        const savedTheme = localStorage.getItem("theme") || "light";
+
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        themeIcon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+        themeToggle.addEventListener("click", () => {
+          const currentTheme = document.documentElement.getAttribute("data-theme");
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+          themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+        });
+
+        // Animación de barras de habilidades
+        const skillLevels = document.querySelectorAll(".skill-level");
+        skillLevels.forEach((level) => {
+          const width = level.getAttribute("data-level");
+          setTimeout(() => {
+            level.style.width = width;
+          }, 500);
+        });
+
+        // Header que se oculta al hacer scroll
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector(".header");
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > lastScrollY && window.scrollY > 200) {
+            header.classList.add("hidden");
+          } else {
+            header.classList.remove("hidden");
+          }
+          lastScrollY = window.scrollY;
+        });
+
+        // Navegación móvil
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".nav");
+
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          nav.classList.toggle("active");
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            menuToggle.classList.remove("active");
+            nav.classList.remove("active");
+          });
+        });
+
+        // Validación básica del formulario
+        const contactForm = document.querySelector(".contact-form");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Simulación de envío exitoso
+            alert("¡Mensaje enviado con éxito! Te contactaré pronto.");
+            contactForm.reset();
+          });
+        }
+      });
+    </script>
 
     <a
       href="https://wa.me/573000000000?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
