@@ -45,12 +45,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       :root {
         --primary: #2563eb;
@@ -99,8 +102,8 @@
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, sans-serif;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, sans-serif;
         line-height: 1.6;
         color: var(--text);
         background-color: var(--bg);
@@ -389,7 +392,11 @@
         font-size: 3.5rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -896,7 +903,7 @@
           width: 100%;
           max-width: 300px;
         }
-        
+
         .testimonials-grid {
           grid-template-columns: 1fr;
         }
@@ -915,7 +922,11 @@
       }
 
       .text-gradient {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -926,7 +937,7 @@
         backdrop-filter: blur(10px);
         border: var(--border-glass);
       }
-      
+
       .whatsapp-float {
         position: fixed;
         bottom: 25px;
@@ -1003,7 +1014,7 @@
         <div class="hero-content">
           <!-- Reemplaza la URL con la de tu foto real -->
           <img
-            src="images/foto.webp"
+            src="images/fotografia_1.webp"
             alt="William García - Desarrollador Full Stack"
             class="profile-image"
             loading="lazy"
@@ -1041,9 +1052,9 @@
               data-category="html"
             >
               <div class="project-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-                  alt="Landing Page Corporativa" 
+                <img
+                  src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="Landing Page Corporativa"
                   loading="lazy"
                 />
               </div>
@@ -1056,7 +1067,46 @@
                 </p>
                 <div class="project-links">
                   <a
-                    href="https://github.com/WilliamR0493/landing"
+                    href="https://github.com/WilliamR0493/Landing-page-Nicole-P-rez"
+                    class="btn btn-primary"
+                    target="_blank"
+                    aria-label="Ver código en GitHub"
+                  >
+                    <i class="fab fa-github"></i> Repositorio
+                  </a>
+                  <a
+                    href="https://nicoleperezcontadora.wuaze.com/?i=1"
+                    class="btn btn-secondary"
+                    target="_blank"
+                    aria-label="Ver demo del proyecto"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Ver Demo
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card animate-on-scroll"
+              data-category="java"
+            >
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="Software Educativo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-content">
+                <h3>Software Educativo</h3>
+                <p class="project-tech">Java, MySQL, Integración cámara</p>
+                <p class="project-description">
+                  Aplicación educativa interactiva con funcionalidades
+                  multimedia para mejorar el aprendizaje.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/WilliamR0493/App_primeros-pasitos"
                     class="btn btn-primary"
                     target="_blank"
                     aria-label="Ver código en GitHub"
@@ -1077,51 +1127,12 @@
 
             <article
               class="project-card animate-on-scroll"
-              data-category="java"
-            >
-              <div class="project-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-                  alt="Software Educativo" 
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-content">
-                <h3>Software Educativo</h3>
-                <p class="project-tech">Java, MySQL, Integración cámara</p>
-                <p class="project-description">
-                  Aplicación educativa interactiva con funcionalidades
-                  multimedia para mejorar el aprendizaje.
-                </p>
-                <div class="project-links">
-                  <a
-                    href="https://github.com/WilliamR0493/edu-software"
-                    class="btn btn-primary"
-                    target="_blank"
-                    aria-label="Ver código en GitHub"
-                  >
-                    <i class="fab fa-github"></i> Repositorio
-                  </a>
-                  <a
-                    href="#"
-                    class="btn btn-secondary"
-                    target="_blank"
-                    aria-label="Ver demo del proyecto"
-                  >
-                    <i class="fas fa-external-link-alt"></i> Ver Demo
-                  </a>
-                </div>
-              </div>
-            </article>
-            
-            <article
-              class="project-card animate-on-scroll"
               data-category="fullstack"
             >
               <div class="project-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-                  alt="E-commerce Full Stack" 
+                <img
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                  alt="E-commerce Full Stack"
                   loading="lazy"
                 />
               </div>
@@ -1129,8 +1140,8 @@
                 <h3>Tienda Online E-commerce</h3>
                 <p class="project-tech">Java, Spring Boot, MySQL, JavaScript</p>
                 <p class="project-description">
-                  Plataforma de comercio electrónico completa con carrito de compras,
-                  pasarela de pago y panel de administración.
+                  Plataforma de comercio electrónico completa con carrito de
+                  compras, pasarela de pago y panel de administración.
                 </p>
                 <div class="project-links">
                   <a
@@ -1242,7 +1253,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="skill-category animate-on-scroll">
               <h3><i class="fas fa-tools"></i> Herramientas</h3>
               <div class="skill">
@@ -1293,11 +1304,18 @@
           </h2>
 
           <div class="about-content">
-            <div class="glass-effect animate-on-scroll" style="padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+            <div
+              class="glass-effect animate-on-scroll"
+              style="
+                padding: 2rem;
+                border-radius: var(--radius);
+                margin-bottom: 2rem;
+              "
+            >
               <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
-                Soy un desarrollador Full Stack con base en Chiquinquirá, Boyacá,
-                Colombia. Mi pasión es crear soluciones tecnológicas que resuelvan
-                problemas reales y mejoren la experiencia de los usuarios.
+                Soy un desarrollador Full Stack con base en Bogotà, Colombia. Mi
+                pasión es crear soluciones tecnológicas que resuelvan problemas
+                reales y mejoren la experiencia de los usuarios.
               </p>
               <p style="margin-bottom: 1.5rem; font-size: 1.1rem">
                 Me especializo en el desarrollo de aplicaciones web utilizando
@@ -1306,8 +1324,8 @@
                 tecnologías y mejorando mis habilidades.
               </p>
               <p style="font-size: 1.1rem">
-                Cuando no estoy programando, disfruto de la fotografía, los videojuegos
-                y aprender sobre nuevas tendencias tecnológicas.
+                Cuando no estoy programando, disfruto de la fotografía, los
+                videojuegos y aprender sobre nuevas tendencias tecnológicas.
               </p>
             </div>
 
@@ -1316,101 +1334,126 @@
                 <h3><i class="fas fa-graduation-cap"></i> Educación</h3>
                 <div class="skill">
                   <div class="skill-name">
-                    <span>Tecnología en Desarrollo de Software</span>
+                    <span>Tècnico en sistemas y desarrollo de software</span>
                   </div>
                   <p style="color: var(--text-light); font-size: 0.9rem">
-                    SENA - Servicio Nacional de Aprendizaje
+                    Instituto San Pablo
                   </p>
                   <p style="color: var(--text-light); font-size: 0.9rem">
-                    2022 - 2024
+                    2022
                   </p>
                 </div>
                 <div class="skill">
                   <div class="skill-name">
-                    <span>Curso de Java Avanzado</span>
+                    <span>Ingenierìa de sistemas(En proceso)</span>
                   </div>
                   <p style="color: var(--text-light); font-size: 0.9rem">
-                    Platzi
+                    Unisangil
                   </p>
-                  <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    2023
+                  </p>
                 </div>
                 <div class="skill">
                   <div class="skill-name">
-                    <span>Desarrollo Web Frontend</span>
+                    <span>Curso de Desarrollo Web con Javascript</span>
                   </div>
                   <p style="color: var(--text-light); font-size: 0.9rem">
-                    freeCodeCamp
+                    Alura Latam
                   </p>
-                  <p style="color: var(--text-light); font-size: 0.9rem">2023</p>
+                  <p style="color: var(--text-light); font-size: 0.9rem">
+                    2025
+                  </p>
                 </div>
               </div>
 
               <div class="skill-category animate-on-scroll">
                 <h3><i class="fas fa-certificate"></i> Certificaciones</h3>
                 <ul style="color: var(--text-light); padding-left: 1.2rem">
-                  <li>Scrum Foundation Professional Certificate (SFPC)</li>
-                  <li>Oracle Java Foundations Certified Junior Associate</li>
-                  <li>Responsive Web Design - freeCodeCamp</li>
-                  <li>JavaScript Algorithms and Data Structures - freeCodeCamp</li>
-                  <li>Front End Development Libraries - freeCodeCamp</li>
+                  <li>
+                    Programa de formación general (ciclo 1, 2, 3 y 4b) en
+                    habilidades de programación de misión tic 2022 con
+                    profundización en desarrollo de aplicaciones móviles
+                  </li>
+                  <li>
+                    programa de formación básico (ciclo 1, 2 y 3) en habilidades
+                    de programación de misión tic 2022
+                  </li>
+                  
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
-      
+
       <section id="testimonios" class="testimonials">
         <div class="container">
           <h2 class="section-title">
             <span class="text-gradient">Testimonios</span>
           </h2>
-          
+
           <div class="testimonials-grid">
             <div class="testimonial-card animate-on-scroll">
               <div class="testimonial-content">
-                "William demostró habilidades excepcionales en el desarrollo de nuestra plataforma educativa. Su atención al detalle y capacidad para resolver problemas complejos fueron fundamentales para el éxito del proyecto."
+                "William demostró habilidades excepcionales en el desarrollo de
+                nuestra plataforma educativa. Su atención al detalle y capacidad
+                para resolver problemas complejos fueron fundamentales para el
+                éxito del proyecto."
               </div>
               <div class="testimonial-author">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                     alt="Carlos Méndez" 
-                     class="testimonial-avatar"
-                     loading="lazy">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                  alt="Johan Cañon"
+                  class="testimonial-avatar"
+                  loading="lazy"
+                />
                 <div class="testimonial-info">
-                  <h4>Carlos Méndez</h4>
-                  <p>Director de Proyectos - EduTech Solutions</p>
+                  <h4>Yohan Cañon</h4>
+                  <p>
+                    Director de Proyecto - I.E.T "Julio Florez" Chiquinquirá
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             <div class="testimonial-card animate-on-scroll">
               <div class="testimonial-content">
-                "Trabajar con William fue una experiencia excelente. Su profesionalismo y conocimientos técnicos en desarrollo full stack superaron nuestras expectativas. Definitivamente lo recomiendo."
+                "Trabajar con William fue una experiencia excelente. Su
+                profesionalismo y conocimientos técnicos en desarrollo full
+                stack superaron nuestras expectativas. Definitivamente lo
+                recomiendo."
               </div>
               <div class="testimonial-author">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                     alt="María Rodríguez" 
-                     class="testimonial-avatar"
-                     loading="lazy">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                  alt="María Rodríguez"
+                  class="testimonial-avatar"
+                  loading="lazy"
+                />
                 <div class="testimonial-info">
-                  <h4>María Rodríguez</h4>
-                  <p>CEO - DigitalMind Agency</p>
+                  <h4>Nicole Perèz  </h4>
+                  <p>Contadora pùblica</p>
                 </div>
               </div>
             </div>
-            
+
             <div class="testimonial-card animate-on-scroll">
               <div class="testimonial-content">
-                "William tiene una gran capacidad para aprender rápidamente nuevas tecnologías. Su dedicación y pasión por el desarrollo web son evidentes en la calidad de su trabajo."
+                "William tiene una gran capacidad para aprender rápidamente
+                nuevas tecnologías. Su dedicación y pasión por el desarrollo web
+                son evidentes en la calidad de su trabajo."
               </div>
               <div class="testimonial-author">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                     alt="Javier López" 
-                     class="testimonial-avatar"
-                     loading="lazy">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
+                  alt="Javier López"
+                  class="testimonial-avatar"
+                  loading="lazy"
+                />
                 <div class="testimonial-info">
-                  <h4>Javier López</h4>
-                  <p>Instructor - SENA</p>
+                  <h4>Edisson Caicedo</h4>
+                  <p>Instructor - Deparatamento de investigaciòn Unisangil</p>
                 </div>
               </div>
             </div>
@@ -1455,7 +1498,10 @@
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; <span id="current-year">2023</span> William García. Todos los derechos reservados.</p>
+        <p>
+          &copy; <span id="current-year">2023</span> William García. Todos los
+          derechos reservados.
+        </p>
 
         <div class="footer-links">
           <a href="#inicio">Inicio</a>
@@ -1481,7 +1527,7 @@
             <i class="fab fa-twitter"></i>
           </a>
           <a
-            href="https://wa.me/573000000000?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
+            href="https://wa.me/573189912352?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
             aria-label="WhatsApp"
             target="_blank"
           >
@@ -1529,7 +1575,8 @@
         }
 
         // Año actual en el footer
-        document.getElementById("current-year").textContent = new Date().getFullYear();
+        document.getElementById("current-year").textContent =
+          new Date().getFullYear();
 
         // Animaciones al hacer scroll
         const animateOnScroll = function () {
@@ -1554,7 +1601,8 @@
         themeIcon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
 
         themeToggle.addEventListener("click", () => {
-          const currentTheme = document.documentElement.getAttribute("data-theme");
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme");
           const newTheme = currentTheme === "light" ? "dark" : "light";
 
           document.documentElement.setAttribute("data-theme", newTheme);
@@ -1616,7 +1664,7 @@
     </script>
 
     <a
-      href="https://wa.me/573000000000?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
+      href="https://wa.me/573189912352?text=Hola%20William,%20me%20interesa%20tu%20perfil%20profesional"
       class="whatsapp-float"
       target="_blank"
       aria-label="Contactar por WhatsApp"
